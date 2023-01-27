@@ -1,0 +1,108 @@
+<!-- this is a structure of Bootstrap Modal -->
+<div class="modal fade" id="restaurantModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-center">
+                <h3 class="modal-title text-light" id="restaurantTitle">Modal title</h3>
+                <button type="button" class="close bg-light" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row text-center">
+                    <div class="col-5">
+                        <img class="img-fluid img-thumbnail" id="logo">
+                    </div>
+                    <div class="col-7">
+                        <table class="table table-hover table-responsive table-sm">
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">Ratings</span></td>
+                                <td id="rating"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">About</span></td>
+                                <td id="about"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">Cuisine</span></td>
+                                <td id="restaurant_type"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">Location</span></td>
+                                <td id="coords"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">Operating Hours</span></td>
+                                <td id="operating_hours"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pill badge-dark font-weight-bold">Contact</span></td>
+                                <td id="contact" style=' width: 200px; word-break: break-all; word-wrap: break-word;'></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td colspan="2"><button type="button" class="btn btn-warning" id="buy" onClick="gotorestaurantwebsite()">Restaurant website</button></td>
+                            </tr>
+                            
+
+                            
+
+                            
+                        </table>
+                        <iframe src="" frameborder="0" allowfullscreen id="youtubeurl"></iframe>
+                        
+                    </div>
+                    
+                </div>
+            
+
+                
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-dark" data-dismiss="modal">Close</button>
+                </div>
+                <div id="my-map"></div>
+                <script>
+                    var map;
+                    var marker;
+                    var infoWindow;
+                    function initMap() {
+                        var storeLocation = new google.maps.LatLng(34.1031131, -118.326343);
+                        var popupContent = "Two Trees Extra Virgin Olive Oil<br>";
+                        popupContent += "1750 Vine St.<br>";
+                        popupContent += "Los Angeles, CA";
+    
+                        map = new google.maps.Map(document.getElementById('my-map'), {
+                            center: storeLocation,
+                            zoom: 14,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+    
+                        marker = new google.maps.Marker({
+                            position: storeLocation,
+                            map: map,
+                            title: "Find us here (Capital Records Tower for real)"
+                        });
+    
+                        infoWindow = new google.maps.InfoWindow({
+                            content: popupContent,
+                            maxWidth: 270
+                        });
+    
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.open(map, marker);
+                        });
+                    }
+                </script>
+                
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc78_DbcEKsHOyco83_xkwekfofeXzs8U&callback=initMap"></script>
+
+<script src="js/app.js"></script>
